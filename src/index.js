@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const fetch = require('node-fetch');
 const path = require('path');
+const fs = require('fs');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 
@@ -13,7 +14,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ===== DATABASE (lowdb - file JSON) =====
-const adapter = new FileSync(path.join(__dirname, '../config/settings.json'));
+// Ensure config directory exists (required for Railway deployment)
+const configDir = path.join(__dirname, '../config');
+if (!fs.existsSync(configDir)) {
+  fs.mkdirSync(configDir, { recursive: true });
+}
+const adapter = new FileSync(path.join(configDir, 'settings.json'));
 const db = low(adapter);
 db.defaults({
   settings: {
