@@ -1,0 +1,23 @@
+{
+  "name": "b2b-giardini-validator",
+  "version": "1.0.0",
+  "description": "Shopify B2B app per validazione ordine minimo, spese imballaggio e messaggi personalizzati",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "node-fetch": "^2.7.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "lowdb": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
